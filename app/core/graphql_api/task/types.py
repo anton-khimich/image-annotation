@@ -1,5 +1,5 @@
 from graphene import ObjectType, ID, String, List
-from graphql_api.annotation.types import AnnotationOutput
+from app.core.graphql_api.annotation.types import AnnotationOutput
 
 
 class TaskOutput(ObjectType):

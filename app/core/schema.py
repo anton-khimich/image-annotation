@@ -1,7 +1,7 @@
 from graphene import ObjectType, Field, ID, List
-from graphql_api.task.types import TaskOutput
-from graphql_api.task.resolvers import resolve_task, resolve_unassigned_tasks
-from graphql_api.task.mutations import (AddTask, AssignTask, CompleteTask,
+from app.core.graphql_api.task.types import TaskOutput
+from app.core.graphql_api.task.resolvers import resolve_task, resolve_unassigned_tasks
+from app.core.graphql_api.task.mutations import (AddTask, AssignTask, CompleteTask,
                                         DeleteTask)
 
 

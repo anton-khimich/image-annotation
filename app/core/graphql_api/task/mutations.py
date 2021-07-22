@@ -1,6 +1,6 @@
 from graphene import Mutation, Field, String, Boolean, ID, List
-from models.task import Task
-from graphql_api.annotation.types import AnnotationInput
+from app.core.models.task import Task
+from app.core.graphql_api.annotation.types import AnnotationInput
 
 
 class AddTask(Mutation):

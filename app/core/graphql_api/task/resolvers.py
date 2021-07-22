@@ -1,4 +1,4 @@
-from models.task import Task
+from app.core.models.task import Task
 
 
 def resolve_task(parent, info, id):

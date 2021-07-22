@@ -1,5 +1,5 @@
 from mongoengine import Document, StringField, ListField, EmbeddedDocumentField
-from models.annotation import Annotation
+from app.core.models.annotation import Annotation
 
 
 class Task(Document):

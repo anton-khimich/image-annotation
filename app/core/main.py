@@ -5,7 +5,7 @@ import schema
 import mongoengine
 
 
-schema = graphene.Schema(query=schema.Query, mutation=schema.Mutations)
+my_schema = graphene.Schema(query=schema.Query, mutation=schema.Mutations)
 app = FastAPI()
 
 
@@ -18,4 +18,4 @@ async def create_db_client():
 async def shutdown_db_client():
     mongoengine.disconnect('annotation')
 
-app.add_route('/', GraphQLApp(schema))
+app.add_route('/', GraphQLApp(my_schema))
