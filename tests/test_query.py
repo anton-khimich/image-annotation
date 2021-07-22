@@ -1,16 +1,33 @@
-from graphene.test import Client
+import pytest
 import graphene
+import mongoengine
+from graphene.test import Client
 from context import schema
 
-my_schema = graphene.Schema(query=schema.Query, mutation=schema.Mutations)
+
+def setup_function():
+    mongoengine.connect('annotationtest', host='mongomock://localhost')
 
 
-def test_add_task():
-    client = Client(my_schema)
-    query = '''{hey}'''
+def teardown_function():
+    mongoengine.disconnect()
+
+
+@pytest.fixture
+def get_schema():
+    return graphene.Schema(query=schema.Query, mutation=schema.Mutations)
+
+
+def test_get_unassigned_tasks(get_schema):
+    client = Client(get_schema)
+    query = '''query getUnassignedTasks {
+                unassignedTasks {
+                    id
+                }
+            }'''
     expected = {
         'data': {
-            'hey': 'Hello'
+            'unassignedTasks': []
         }
     }
     executed = client.execute(query)

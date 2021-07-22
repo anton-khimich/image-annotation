@@ -1,8 +1,8 @@
 import graphene
+import mongoengine
+import schema
 from fastapi import FastAPI
 from starlette.graphql import GraphQLApp
-import schema
-import mongoengine
 
 
 my_schema = graphene.Schema(query=schema.Query, mutation=schema.Mutations)
@@ -17,5 +17,6 @@ async def create_db_client():
 @app.on_event("shutdown")
 async def shutdown_db_client():
     mongoengine.disconnect('annotation')
+
 
 app.add_route('/', GraphQLApp(my_schema))
