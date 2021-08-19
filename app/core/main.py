@@ -1,11 +1,11 @@
 import graphene
 import mongoengine
-import schema
+import app.core.schema
 from fastapi import FastAPI
 from starlette.graphql import GraphQLApp
 
 
-my_schema = graphene.Schema(query=schema.Query, mutation=schema.Mutations)
+my_schema = graphene.Schema(query=app.core.schema.Query, mutation=app.core.schema.Mutations)
 app = FastAPI()
 
 
